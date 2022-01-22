@@ -1,0 +1,10 @@
+version: '3'
+services:
+  database:
+    image: postgres:14.1
+    environment:
+      - POSTGRES_USER=sin
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=rbac
+    ports:
+      - 5432:5432
