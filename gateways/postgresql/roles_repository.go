@@ -11,13 +11,13 @@ import (
 
 const (
 	createRoleQueryTempalte = `
-		INSERT INTO %s
-		VALUES ($1)
-		ON CONFLICT DO NOTHING
+	INSERT INTO %s
+	VALUES ($1)
+	ON CONFLICT DO NOTHING
 `
 	deleteRoleQueryTemplate = `
-		DELETE FROM %s
-		WHERE role_name=$1
+	DELETE FROM %s
+	WHERE role_name=$1
 `
 	grantPermissionsQueryTemplate = `
 	INSERT INTO %s
