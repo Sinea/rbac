@@ -25,7 +25,7 @@ func main() {
 
 	userID := "cain"
 
-	usersRepo := postgresql.NewUsersRepository(pool, "users", "user_roles")
+	usersRepo := postgresql.NewUsersRepository(pool, "users", "user_roles", "role_permissions")
 	rolesRepo := postgresql.NewRolesRepository(pool, "roles", "role_permissions")
 	_, err = usersRepo.Create(context.Background(), userID)
 	if err != nil {
@@ -43,8 +43,15 @@ func main() {
 		log.Println(err)
 	}
 	err = usersRepo.AssignRole(context.Background(), userID, "sudoers")
+	if err != nil {
+		log.Println(err)
+	}
+
+	hasAccess, err := usersRepo.HasAccess(context.Background(), userID, domain.NewPermission("bucket", "rename"))
 
 	if err != nil {
 		log.Println(err)
+	} else {
+		log.Println(hasAccess)
 	}
 }

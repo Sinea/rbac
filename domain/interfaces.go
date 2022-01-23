@@ -27,6 +27,6 @@ type RolesRepository interface {
 }
 
 // UserAccessService is a service that checks if a user has a certain permission
-type UserAccessService interface {
-	HasAccess(userID string, permission Permission) (bool, error)
+type UserAccessChecker interface {
+	HasAccess(ctx context.Context, userID string, permission Permission) (bool, error)
 }

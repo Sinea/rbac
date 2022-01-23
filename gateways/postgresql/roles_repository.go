@@ -95,7 +95,7 @@ func (r *RolesRepository) RevokePermissions(ctx context.Context, roleName string
 	return nil
 }
 
-func NewRolesRepository(pool *pgxpool.Pool, rolesTable string, rolePermissionsTable string) *RolesRepository {
+func NewRolesRepository(pool *pgxpool.Pool, rolesTable, rolePermissionsTable string) *RolesRepository {
 	return &RolesRepository{
 		pool:                   pool,
 		createRoleQuery:        fmt.Sprintf(createRoleQueryTempalte, rolesTable),
